@@ -11,6 +11,10 @@ body {
   background: #06283d;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 li {
   list-style-type: none;
 }
