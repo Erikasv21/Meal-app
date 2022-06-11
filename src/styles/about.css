@@ -7,9 +7,15 @@
 }
 
 .about-content {
-  width: 50%;
+  width: 70%;
 }
 
 .about-content h2 {
   color: #fff;
+}
+
+@media only screen and (max-width: 768px) {
+  .about-content h2 {
+    font-size: 16px;
+  }
 }

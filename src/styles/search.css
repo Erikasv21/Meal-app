@@ -12,3 +12,13 @@
 #filter {
   margin-left: 40px;
 }
+
+@media only screen and (max-width: 768px) {
+  .search-container {
+    flex-direction: column;
+  }
+
+  #filter {
+    margin-top: 30px;
+  }
+}
