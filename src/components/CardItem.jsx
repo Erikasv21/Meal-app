@@ -18,7 +18,7 @@ const CardItem = ({ item, filter }) => {
       <Card
         sx={{
           height: "100%",
-          width: "300px",
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           // margin: "0 30px",
