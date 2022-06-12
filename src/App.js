@@ -19,7 +19,7 @@ function App() {
       );
 
       setMeal(result.data.meals);
-      console.log(result.data.meals);
+//       console.log(result.data.meals);
     };
 
     fetchData();
