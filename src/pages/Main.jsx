@@ -8,7 +8,7 @@ const Main = ({ meal, getQuery, filter, setFilter }) => {
 
   const changeFilter = (e) => {
     setFilter(e.target.value);
-//     console.log(e.target.value);
+    // console.log(e.target.value);
   };
 
   useEffect(() => {
@@ -23,7 +23,11 @@ const Main = ({ meal, getQuery, filter, setFilter }) => {
         changeFilter={changeFilter}
         filter={filter}
       />
-      {isLoading === false ? <CardGrid meal={meal} /> : <LoadingScreen />}
+      {isLoading === false ? (
+        <CardGrid meal={meal} filter={filter} />
+      ) : (
+        <LoadingScreen />
+      )}
     </>
   );
 };

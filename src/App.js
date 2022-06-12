@@ -19,7 +19,7 @@ function App() {
       );
 
       setMeal(result.data.meals);
-//       console.log(result.data.meals);
+      // console.log(result.data.meals);
     };
 
     fetchData();
@@ -44,7 +44,7 @@ function App() {
         await axios(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${filter}
       `);
       setMeal(filterResult.data.meals);
-//       console.log(filterResult.data);
+      // console.log(filterResult.data);
     };
     filterFetch();
   }, [filter]);

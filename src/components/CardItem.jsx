@@ -8,7 +8,7 @@ import Button from "@mui/material/Button";
 import ModalItem from "./ModalItem";
 import "../styles/carditem.css";
 
-const CardItem = ({ item }) => {
+const CardItem = ({ item, filter }) => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -47,12 +47,16 @@ const CardItem = ({ item }) => {
           </Typography>
           <Typography>{item.strCategory}</Typography>
         </CardContent>
-        <CardActions sx={{ background: "#DFF6FF" }}>
-          <Button size="small" onClick={handleOpen}>
-            Ingredients
-          </Button>
-          <ModalItem open={open} handleClose={handleClose} item={item} />
-        </CardActions>
+        {filter ? (
+          ""
+        ) : (
+          <CardActions sx={{ background: "#DFF6FF" }}>
+            <Button size="small" onClick={handleOpen}>
+              Ingredients
+            </Button>
+            <ModalItem open={open} handleClose={handleClose} item={item} />
+          </CardActions>
+        )}
       </Card>
     </>
   );
