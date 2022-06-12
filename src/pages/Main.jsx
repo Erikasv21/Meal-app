@@ -8,7 +8,7 @@ const Main = ({ meal, getQuery, filter, setFilter }) => {
 
   const changeFilter = (e) => {
     setFilter(e.target.value);
-    console.log(e.target.value);
+//     console.log(e.target.value);
   };
 
   useEffect(() => {
