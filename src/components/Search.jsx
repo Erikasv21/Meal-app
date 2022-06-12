@@ -6,7 +6,7 @@ import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import "../styles/search.css";
 
-const Search = ({ getQuery, changeFilter }) => {
+const Search = ({ getQuery, changeFilter, filter }) => {
   const [text, setText] = useState("");
   const onChange = (q) => {
     setText(q);
@@ -32,11 +32,10 @@ const Search = ({ getQuery, changeFilter }) => {
             labelId="demo-simple-select-label"
             id="demo-simple-select"
             label="Filter"
-            value={"All"}
+            value={filter}
             onChange={changeFilter}
             sx={{ width: "15ch" }}
           >
-            <MenuItem value={"All"}>All</MenuItem>
             <MenuItem value={"Vegetarian"}>Vegetarian</MenuItem>
             <MenuItem value={"Side"}>Side dish</MenuItem>
             <MenuItem value={"Miscellaneous"}>Miscellaneous</MenuItem>

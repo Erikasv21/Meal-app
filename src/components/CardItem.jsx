@@ -1,50 +1,59 @@
-import React from "react";
-import Grid from "@mui/material/Grid";
+import React, { useState } from "react";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-
-// import CardActions from "@mui/material/CardActions";
-// import Button from "@mui/material/Button";
+import CardActions from "@mui/material/CardActions";
+import Button from "@mui/material/Button";
+import ModalItem from "./ModalItem";
+import "../styles/carditem.css";
 
 const CardItem = ({ item }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <>
-      <Grid container spacing={4}>
-        <Grid item xs={12} sm={6} md={4}>
-          <Card
-            sx={{
-              height: "400px",
-              width: "300px",
-              display: "flex",
-              flexDirection: "column",
-              // margin: "0 30px",
-            }}
+      <Card
+        sx={{
+          height: "100%",
+          width: "300px",
+          display: "flex",
+          flexDirection: "column",
+          // margin: "0 30px",
+        }}
+        id="card-id"
+      >
+        <CardMedia
+          component="img"
+          sx={{
+            // 16:9
+            height: "100%",
+            width: "100%",
+            background: "cover",
+          }}
+          image={item.strMealThumb}
+          alt="food-image"
+        />
+        <CardContent sx={{ flexGrow: 1, background: "#DFF6FF" }}>
+          <Typography
+            gutterBottom
+            variant="h5"
+            component="h2"
+            sx={{ fontSize: "20px" }}
           >
-            <CardMedia
-              component="img"
-              sx={{
-                // 16:9
-                height: "100%",
-                width: "100%",
-                background: "cover",
-              }}
-              image={item.strMealThumb}
-              alt="food-image"
-            />
-            <CardContent sx={{ flexGrow: 0, background: "#DFF6FF" }}>
-              <Typography gutterBottom variant="h5" component="h2">
-                {item.strMeal}
-              </Typography>
-              <Typography>{item.strCategory}</Typography>
-            </CardContent>
-            {/* <CardActions sx={{ background: "#DFF6FF" }}>
-              <Button size="small">Ingredients</Button>
-            </CardActions> */}
-          </Card>
-        </Grid>
-      </Grid>
+            <strong>{item.strMeal}</strong>
+          </Typography>
+          <Typography>{item.strCategory}</Typography>
+        </CardContent>
+        <CardActions sx={{ background: "#DFF6FF" }}>
+          <Button size="small" onClick={handleOpen}>
+            Ingredients
+          </Button>
+          <ModalItem open={open} handleClose={handleClose} item={item} />
+        </CardActions>
+      </Card>
     </>
   );
 };

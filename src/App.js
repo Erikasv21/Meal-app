@@ -9,6 +9,7 @@ import About from "./pages/About";
 function App() {
   const [meal, setMeal] = useState([]);
   const [query, setQuery] = useState();
+  const [filter, setFilter] = useState("");
 
   // Fetching data whats inside the input field
   useEffect(() => {
@@ -18,7 +19,7 @@ function App() {
       );
 
       setMeal(result.data.meals);
-      // console.log(result.data.meals);
+      console.log(result.data.meals);
     };
 
     fetchData();
@@ -36,6 +37,18 @@ function App() {
     fetchDataInstant();
   }, []);
 
+  // Fetch by category
+  useEffect(() => {
+    const filterFetch = async () => {
+      const filterResult =
+        await axios(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${filter}
+      `);
+      setMeal(filterResult.data.meals);
+      console.log(filterResult.data);
+    };
+    filterFetch();
+  }, [filter]);
+
   return (
     <Router>
       <Navbar />
@@ -43,7 +56,14 @@ function App() {
         <Routes>
           <Route
             path="/"
-            element={<Main meal={meal} getQuery={(q) => setQuery(q)} />}
+            element={
+              <Main
+                meal={meal}
+                getQuery={(q) => setQuery(q)}
+                filter={filter}
+                setFilter={setFilter}
+              />
+            }
           />
           <Route path="/about" element={<About />} />
         </Routes>
